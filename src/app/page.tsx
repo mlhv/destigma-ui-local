@@ -3,9 +3,9 @@ import {
   CornerDownLeft,
   Rabbit,
   Settings,
-  Share,
   Triangle,
   Turtle,
+  Mail,
 } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
@@ -28,6 +28,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
+import Link from "next/link"
 
 export default function Dashboard() {
   return (
@@ -163,13 +164,19 @@ export default function Dashboard() {
               </form>
             </DrawerContent>
           </Drawer>
-          <Button
+          <Button asChild
             variant="outline"
             size="sm"
             className="ml-auto gap-1.5 text-sm"
           >
-            <Share className="size-3.5" />
-            Share
+            <Link href="/auth/login">Login</Link>
+          </Button>
+          <Button asChild
+            variant="outline"
+            size="sm"
+            className="gap-1.5 text-sm"
+          >
+            <Link href="/auth/register">Register</Link>
           </Button>
         </header>
         <main className="grid flex-1 gap-4 overflow-auto p-4 md:grid-cols-2 lg:grid-cols-3">

@@ -16,6 +16,7 @@ import * as z from 'zod';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormField, FormLabel, FormMessage, FormItem, FormControl } from "../ui/form"
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   firstName: z.string().min(1, 'First name is required'),
@@ -35,6 +36,8 @@ const RegisterForm= () => {
     }
   });
 
+  const router = useRouter();
+
   const handleSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log({ values });
 
@@ -53,6 +56,7 @@ const RegisterForm= () => {
 
       const data = await response.json();
       console.log('Registration successful:', data);
+      router.push('/auth/login');
     } catch (error) {
       console.error('Error during registration', error);
     }
